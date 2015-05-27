@@ -22,3 +22,12 @@ Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
 
 # Usage #
 
+# Tips #
+The code snippet in the deploy.sh.ftl works with 4.5.3 and above versions . If you wish to use it for 4.5.2 and below, replace the code in that file with this code
+
+```
+cp ${deployed.file.name} ${deployed.container.client.clientHome}/scripts/
+cd ${deployed.container.client.clientHome}/scripts
+java -Dserver.parser.inqmy=true -Dproxy=DC -classpath "../lib/*" com.sap.engine.deployment.DMClient ${deployed.container.username}:${deployed.container.password}@${deployed.container.hostname}:${deployed.container.port}  ${deployed.file.name}
+rm ${deployed.file.name}
+```
