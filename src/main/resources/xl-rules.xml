@@ -1,0 +1,27 @@
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<?xml version="1.0"?>
+
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+	<!-- Add your <rule ...> and <disable-rule ...> elements here -->
+
+	<rule name="SAPNetweaverDeploymentRule" scope="deployed">
+		<conditions>
+			<type>sap.EarModule</type>
+			<operation>CREATE</operation>
+			<operation>MODIFY</operation>
+		</conditions>
+		<steps>
+			<os-script>
+				<script>sap/deploy</script>
+				<description expression="true">"Deploying " + str(deployed.file.name) + " to " + str(deployed.container)</description>
+			</os-script>
+		</steps>
+	</rule>	
+
+</rules>

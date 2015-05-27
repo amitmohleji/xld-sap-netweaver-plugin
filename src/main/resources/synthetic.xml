@@ -1,0 +1,29 @@
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<?xml version='1.0' encoding='UTF-8'?>
+
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<type type="sap.NetWeaverClient" extends="generic.Container">
+    <property name="clientHome" default="" description=""/>
+</type>
+<type type="sap.NetWeaverEndpoint" extends="generic.NestedContainer">
+    <property name="client" kind="ci" as-containment="true" referenced-type="sap.NetWeaverClient"/>
+    <property name="username"  description="Username for deployment" />
+    <property name="password" password="true" description="Password for Deployment"/>
+    <property name="hostname"  description="Host for deployment server"/>
+    <property name="port" description="Port for deployment" default="50004" />
+</type>    
+<type type="sap.EarModule" extends="udm.BaseDeployedArtifact" container-type="sap.NetWeaverEndpoint" deployable-type="sap.Ear">
+    <generate-deployable type="sap.Ear" extends="jee.Ear"/>
+</type>
+
+
+</synthetic>
+
+
